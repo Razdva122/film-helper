@@ -39,7 +39,19 @@ body {
 	padding: 100px 0 50px;
 }
 
+#startTest{
+	display: block;
+	width: 200px; 
+	height: 50px;
+	margin-left: auto;
+    margin-right: auto;
+}
 
+.test{
+	width: 100%;
+	height: 600px;
+	background: green;
+}
 
 
 /* Footer
