@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
 <head>
 	<meta charset="utf-8" />
 	<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
@@ -17,7 +17,7 @@
     <script src="Sources/js/main.js"></script>    
 </head>
 
-<body>
+<body ng-controller="firstCtrl">
 
 <div class="wrapper">
 
@@ -49,8 +49,13 @@
 	</header><!-- .header-->
 
 	<main class="content">
-		<strong>Test</strong> this is content
 		<div class="test">
+			<!--<div>
+				{{title}}
+				{{year}}
+				{{rating}}
+				{{info}}
+			<div>-->
 			<button id="startTest">Делай, ТЕСТ!</button>
 		</div>
 	</main><!-- .content -->
