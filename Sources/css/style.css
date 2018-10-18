@@ -40,11 +40,12 @@ body {
 }
 
 #startTest{
-	display: block;
+	position: relative;
+	top:70%;
+	left: 50%;
+	margin-left: -100px;
 	width: 200px; 
 	height: 50px;
-	margin-left: auto;
-    margin-right: auto;
 }
 
 .test{
