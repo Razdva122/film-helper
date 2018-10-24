@@ -90,6 +90,7 @@ body {
 	height: 100%;
 	display: flex;
 	flex-direction: row;
+	align-items:center;
 }
 
 .menu{
@@ -99,16 +100,19 @@ body {
 .menu ul{
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: flex-end;
 }
 .menu ul li{
 	padding: 25px;
-
 }
 
 .menu ul a:hover{
 	color: #e76543;
 	
+}
+
+.selected{
+	color: #e76543 !important;
 }
 
 .menu ul a{
@@ -117,6 +121,8 @@ body {
 	transition: 0.5s;
 }
 
-.menu ul a i{
-	font-size: 50px;
+
+
+.menu ul a{
+	font-size: 20px;
 }

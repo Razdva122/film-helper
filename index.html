@@ -2,18 +2,27 @@
 <html ng-app="myApp">
 <head>
 	<meta charset="utf-8" />
-	<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
-	<title></title>
+
+	<title>Film Helper - поможим решить что посмотреть сегодня!</title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
+	<!--Подключение Css-->
 	<link href="Sources/css/style.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+	<!--Подключение Jquery + Angular-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+    <!--Подключение Js Файлов-->
     <script src="Sources/js/films_info.js"></script>
     <script src="Sources/js/films.js"></script>  
-    <script src="Sources/js/main.js"></script>    
+    <script src="Sources/js/main.js"></script>
+    <!--Подключение Favicon-->
+    <link rel="apple-touch-icon" sizes="76x76" href="Sources/img/favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="Sources/img/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="Sources/img/favicon/favicon-16x16.png">
+	<link rel="manifest" href="Sources/img/favicon/site.webmanifest">
+	<link rel="mask-icon" href="Sources/img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="theme-color" content="#ffffff">    
 </head>
 
 <body ng-controller="firstCtrl">
@@ -28,18 +37,23 @@
 			<nav class="menu">
 				<ul>
 					<li>
-						<a href="#">
-							<i class="material-icons">announcement</i>
+						<a href="#" class="selected">
+							Главная
 						<a>
 					</li>
 					<li>
 						<a href="#">
-							<i class="material-icons">announcement</i>
+							Топ-100
 						<a>
 					</li>
 					<li>
 						<a href="#">
-							<i class="material-icons">announcement</i>
+							Лучшие фильмы года
+						<a>
+					</li>
+					<li>
+						<a href="#">
+							О проекте
 						<a>
 					</li>
 				</ul>
