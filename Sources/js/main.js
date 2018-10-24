@@ -3,7 +3,7 @@ function getRandomInt(min, max) {
 }
 
 $(document).ready(function(){
-	$(".header").css("border","3px solid red");
+	//$(".header").css("border","3px solid red");
 });
 angular.module("myApp",[])
 .controller("firstCtrl",function ($scope) {

@@ -1,3 +1,5 @@
+@import url("reset.css");
+
 html {
 	height: 100%;
 }
@@ -7,6 +9,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, 
 body {
 	font: 12px/18px Arial, sans-serif;
 	height: 100%;
+	background: #f5f2f2;
 }
 
 * {
@@ -29,7 +32,7 @@ body {
 	width: 100%;
 	min-width: 800px;
 	height: 100px;
-	background: #FFE680;
+	background: #f5f2f2;
 }
 
 
@@ -67,11 +70,11 @@ body {
 }
 
 .logoImg{
-	margin: 10px;
+	margin: 0px;
     padding: 0;
     position: relative;
-    width:80px;
-    height:80px;
+    width:100px;
+    height:100px;
 }
 
 .logoImg img{	
@@ -100,18 +103,18 @@ body {
 }
 .menu ul li{
 	padding: 25px;
-	transition: 0.5s;
 
 }
 
-.menu ul li:hover{
-	background-color: white;
+.menu ul a:hover{
+	color: #e76543;
 	
 }
 
 .menu ul a{
 	color: black;
 	text-decoration: none;
+	transition: 0.5s;
 }
 
 .menu ul a i{
