@@ -12,11 +12,41 @@ angular.module("myApp",[])
 	$scope.randomFilm = function(){
 		//var randomNumber=getRandomInt(0,arrayFilms.length);
 		//$scope.currentFilm=arrayFilms[randomNumber];
-		$scope.currentFilm=bestFilmForUser()[0];
+		$scope.currentFilm=bestFilmForUser();
 	}
 });
 
+/**
+ * Конструктор обьектов результат фильма.
+ * Подразумевает собой фильм + на сколько фильм подходит юзеру.
+ * 0 - идеально подходит в данном жанре 10 - совсем не подходит.
+ * 
+ * @param {film} [film] обьект фильма 
+ * @param {number} [жанры] число от 0 до 10 на сколько 
+ *                         желание юзера сходится с жанром фильма
+ */
+
+function FilmResult(film,drama,comedy,action,fantasy,adventure){
+	this.film=film;
+
+	this.drama=drama;
+	this.comedy=comedy;
+	this.action=action;
+	this.fantasy=fantasy;
+	this.adventure=adventure;
+
+	this.total=this.drama+this.comedy+this.action+this.fantasy+this.adventure;
+}
+
+/**
+ * Сравнивает ответы пользователя с базой данных по фильмам.
+ * Создает обьект FilmResult и добавляет его в массив filmsRanks.
+ * 
+ * @param {number} [жанры] число от 0 до 10 на сколько юзеру интересен жанр
+ */
+
 function pickYourGenre(drama,comedy,action,fantasy,adventure){
+	filmsRanks=[];
 	for(var i=0;i<arrayFilms.length;i++){
 		var filmResult=[];
 		filmResult[0]=arrayFilms[i];
@@ -25,21 +55,38 @@ function pickYourGenre(drama,comedy,action,fantasy,adventure){
 		filmResult[3]=Math.abs(arrayFilms[i].actionRating-action);
 		filmResult[4]=Math.abs(arrayFilms[i].fantasyRating-fantasy);
 		filmResult[5]=Math.abs(arrayFilms[i].adventureRating-adventure);
-		filmsRanks.push(filmResult);
+
+		var currentFilmResult=new FilmResult(filmResult[0],filmResult[1],
+			filmResult[2],filmResult[3],filmResult[4],filmResult[5])
+
+		filmsRanks.push(currentFilmResult);
 	}
 
 }
 
-function bestFilmForUser(){
-	var bestFilmPick=filmsRanks[0];
-	for(var i=1;i<arrayFilms.length;i++){
-		var resultOfCurrentBestFilm=bestFilmPick[1]+bestFilmPick[2]+
-			bestFilmPick[3]+bestFilmPick[4]+bestFilmPick[5];
-		var resultCurrentFilm=filmsRanks[i][1]+filmsRanks[i][2]+
-			filmsRanks[i][3]+filmsRanks[i][4]+filmsRanks[i][5];
-		if(resultCurrentFilm<resultOfCurrentBestFilm){
-			bestFilmPick=filmsRanks[i];
-		}		
-	}
-	return bestFilmPick;
+/**
+ * Сортирует фильмы в массиве filmsRanks
+ * По значению total(Сумма значений совместимости всех жанров).
+ * Чем total меньше(ближе к 0) тем лучше фильм подходит юзеру
+ */
+
+function sortFilms(){
+	filmsRanks.sort(function(a, b){
+		var totalA=a.total, totalB=b.total;
+	 	if (totalA < totalB){ //sort string ascending
+	  		return -1;
+	  	}
+	 	if (totalA > totalB){
+	  		return 1;
+	  	}
+		return 0; //default return value (no sorting)
+	});
+}
+/**
+ * Сортирует массив и возвращает наиболее подходяший фильм.
+ * @return {[film]} возвращает обьект фильм.
+ */
+function bestFilmForUser() {
+	sortFilms();
+	return filmsRanks[0].film;
 }

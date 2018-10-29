@@ -1,3 +1,16 @@
+/**
+ * Конструктор обьектов фильм
+ * @param {[string]} title           Название фильма
+ * @param {[number]} year            Год выпуска фильма
+ * @param {[number]} rating          Рейтинг фильма по кинопоиску
+ * @param {[string]} info            Описание фильма
+ * Рейтинг от 0 до 10 на сколько фильм подходит под конкретный жанр
+ * @param {[number]} dramaRating     Драма
+ * @param {[number]} comedyRating    Комедия
+ * @param {[number]} actionRating    Экшн(Боевик)
+ * @param {[number]} fantasyRating   Фантастика
+ * @param {[number]} adventureRating Приключение
+ */
 function Film(title,year,rating,info,dramaRating,comedyRating,
 	actionRating,fantasyRating,adventureRating){
 	this.title=title;
@@ -19,3 +32,4 @@ var forrestGump=new Film("Форрест Гамп",1994,8.917,forrestGumpInfo,8,
 	2,2,0,6);
 
 var arrayFilms=[shawshank,greenMile,forrestGump];
+
