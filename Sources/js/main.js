@@ -3,6 +3,7 @@ function getRandomInt(min, max) {
 }
 
 var filmsRanks=[];
+var userGenre=new Object();
 
 $(document).ready(function(){
 	//$(".header").css("border","3px solid red");
@@ -39,29 +40,46 @@ function FilmResult(film,drama,comedy,action,fantasy,adventure){
 }
 
 /**
- * Сравнивает ответы пользователя с базой данных по фильмам.
+ * Сравнивает результаты пользователя с базой данных по фильмам.
  * Создает обьект FilmResult и добавляет его в массив filmsRanks.
  * 
- * @param {number} [жанры] число от 0 до 10 на сколько юзеру интересен жанр
+ * @param {Object} [жанры] обьект содержаший число от 0 до 10
+ *						   на сколько юзеру интересен жанр
+ *                         0 - очень интересен, 10-совсем не интересен
  */
 
-function pickYourGenre(drama,comedy,action,fantasy,adventure){
+function userСhoices () {
 	filmsRanks=[];
 	for(var i=0;i<arrayFilms.length;i++){
 		var filmResult=[];
 		filmResult[0]=arrayFilms[i];
-		filmResult[1]=Math.abs(arrayFilms[i].dramaRating-drama);
-		filmResult[2]=Math.abs(arrayFilms[i].comedyRating-comedy);
-		filmResult[3]=Math.abs(arrayFilms[i].actionRating-action);
-		filmResult[4]=Math.abs(arrayFilms[i].fantasyRating-fantasy);
-		filmResult[5]=Math.abs(arrayFilms[i].adventureRating-adventure);
+		filmResult[1]=Math.abs(arrayFilms[i].dramaRating-userGenre.drama);
+		filmResult[2]=Math.abs(arrayFilms[i].comedyRating-userGenre.comedy);
+		filmResult[3]=Math.abs(arrayFilms[i].actionRating-userGenre.action);
+		filmResult[4]=Math.abs(arrayFilms[i].fantasyRating-userGenre.fantasy);
+		filmResult[5]=Math.abs(arrayFilms[i].adventureRating-userGenre.adventure);
 
 		var currentFilmResult=new FilmResult(filmResult[0],filmResult[1],
 			filmResult[2],filmResult[3],filmResult[4],filmResult[5])
 
 		filmsRanks.push(currentFilmResult);
 	}
+}
 
+/**
+ * После первого вопрос формируем изначальную структуру
+ * В последующих вопросах уточним жанры
+ * 
+ * @param {number} [жанры] обьект содержаший число от 0 до 10
+ *						   на сколько юзеру интересен жанр
+ *                         0 - очень интересен, 10-совсем не интересен
+ */
+function pickYourGenre(drama,comedy,action,fantasy,adventure){
+	userGenre.drama=drama;
+	userGenre.comedy=comedy;
+	userGenre.action=action;
+	userGenre.fantasy=fantasy;
+	userGenre.adventure=adventure;
 }
 
 /**
@@ -89,4 +107,39 @@ function sortFilms(){
 function bestFilmForUser() {
 	sortFilms();
 	return filmsRanks[0].film;
+}
+/**
+ * Уточняет коэфиценты жанров предлагая человеку выбрать главного героя.
+ * @param {number} [pick]выбор гг, который подходит по духу человеку
+ * 1-Капитан джек воробей
+ * 2-Джон Уик
+ * 3-Купер(интерстеллар)
+ * 4-Эйс Вентура
+ */
+function pickFavoriteHero(pick){	
+	if(pick===1){
+		userGenre.drama=userGenre.drama*1.1;
+		userGenre.comedy=userGenre.comedy*0.9;
+		userGenre.action=userGenre.action*1;
+		userGenre.fantasy=userGenre.fantasy*0.9;
+		userGenre.adventure=userGenre.adventure*0.8;
+	}else if(pick===2){
+		userGenre.drama=userGenre.drama*0.9;
+		userGenre.comedy=userGenre.comedy*1.1;
+		userGenre.action=userGenre.action*0.8;
+		userGenre.fantasy=userGenre.fantasy*1.1;
+		userGenre.adventure=userGenre.adventure*1;
+	}else if(pick===3){
+		userGenre.drama=userGenre.drama*0.8;
+		userGenre.comedy=userGenre.comedy*1.2;
+		userGenre.action=userGenre.action*1.1;
+		userGenre.fantasy=userGenre.fantasy*0.9;
+		userGenre.adventure=userGenre.adventure*1;
+	}else if(pick===4){
+		userGenre.drama=userGenre.drama*1.2;
+		userGenre.comedy=userGenre.comedy*0.8;
+		userGenre.action=userGenre.action*1.1;
+		userGenre.fantasy=userGenre.fantasy*1;
+		userGenre.adventure=userGenre.adventure*0.9;
+	}
 }
