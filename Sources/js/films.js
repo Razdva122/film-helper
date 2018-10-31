@@ -30,6 +30,21 @@ var greenMile=new Film("Зеленая миля",1999,9.062,greenMileInfo,9,
 	0,3,0,2);
 var forrestGump=new Film("Форрест Гамп",1994,8.917,forrestGumpInfo,8,
 	2,2,0,6);
+var schindler=new Film("Список Шиндлера",1993,8.819,schindlerInfo,9,
+	0,4,0,2);
+var onePlus=new Film("1+1",2011,8.810,onePlusInfo,6,
+	6,1,0,1);
+var leon=new Film("Леон",1994,8.682,leonInfo,6,
+	1,7,1,2);
+var inception=new Film("Начало",2010,8.665,inceptionInfo,2,
+	1,8,6,4);
+var lionKing=new Film("Король Лев",1994,8.774,lionKingInfo,5,
+	4,1,9,7);
+var fightClub=new Film("Бойцовский клуб",1999,8.650,fightClubInfo,5,
+	0,7,3,1);
+var ivan=new Film("Иван Васильевич меняет профессию",1973,8.785,ivanInfo,2,
+	8,3,7,7);
 
-var arrayFilms=[shawshank,greenMile,forrestGump];
+var arrayFilms=[shawshank,greenMile,forrestGump,schindler,
+	onePlus,leon,inception,lionKing,fightClub,ivan];
 

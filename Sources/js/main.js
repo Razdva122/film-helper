@@ -72,7 +72,7 @@ function userСhoices () {
  * 
  * @param {number} [жанры] обьект содержаший число от 0 до 10
  *						   на сколько юзеру интересен жанр
- *                         0 - очень интересен, 10-совсем не интересен
+ *                         10 - очень интересен, 0-совсем не интересен
  */
 function pickYourGenre(drama,comedy,action,fantasy,adventure){
 	userGenre.drama=drama;
