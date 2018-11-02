@@ -1,9 +1,30 @@
+/**
+ * To do list!
+ * 1.Выдача фильма с 3 результатами: Подойдет, Не хочу смотреть, Не нравится совсем
+ * 1а)Изменение коэфицентов фильма при ответе не нравится совсем
+ *    жанр от 0 до 4 +0.5 от 6 до 10 - 0.5
+ *    +++2.В каждый фильм внести 3 актера
+ * 2а)Сделать вопрос на выбор актера(нравится,воздержусь,не нравится)
+ * 2аа)Создать базу данных со всеми актерами
+ * 2б)Создать базу юзера по актерам
+ * 2в)Учитывать актеров при подборе фильмов
+ * 3.Сделать разделение фильмов на мужской,женский,семейный
+ * 3а)Сделать вопрос какие пункты подходят человеку
+ * 3б)Учитывать эти пункты при подборе фильма
+ * 4.Сделать вопрос на фильм каких годов хотел бы посмотреть человек
+ */
+
+
+
+
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-var filmsRanks=[];
-var userGenre=new Object();
+var favoriteActors=[];//Актеры которые нравятся пользователю
+var dislikeActors=[];//Актеры которые не нравятся пользователю
+var filmsRanks=[];//Массив фильмов с рейтенгом для пользователя
+var userGenre=new Object();//Параметры юзера по его запросам
 
 $(document).ready(function(){
 	//$(".header").css("border","3px solid red");
@@ -53,11 +74,11 @@ function userСhoices () {
 	for(var i=0;i<arrayFilms.length;i++){
 		var filmResult=[];
 		filmResult[0]=arrayFilms[i];
-		filmResult[1]=Math.abs(arrayFilms[i].dramaRating-userGenre.drama);
-		filmResult[2]=Math.abs(arrayFilms[i].comedyRating-userGenre.comedy);
-		filmResult[3]=Math.abs(arrayFilms[i].actionRating-userGenre.action);
-		filmResult[4]=Math.abs(arrayFilms[i].fantasyRating-userGenre.fantasy);
-		filmResult[5]=Math.abs(arrayFilms[i].adventureRating-userGenre.adventure);
+		filmResult[1]=Math.abs(arrayFilms[i].dramaRating-userGenre.drama).toFixed(2);
+		filmResult[2]=Math.abs(arrayFilms[i].comedyRating-userGenre.comedy).toFixed(2);
+		filmResult[3]=Math.abs(arrayFilms[i].actionRating-userGenre.action).toFixed(2);
+		filmResult[4]=Math.abs(arrayFilms[i].fantasyRating-userGenre.fantasy).toFixed(2);
+		filmResult[5]=Math.abs(arrayFilms[i].adventureRating-userGenre.adventure).toFixed(2);
 
 		var currentFilmResult=new FilmResult(filmResult[0],filmResult[1],
 			filmResult[2],filmResult[3],filmResult[4],filmResult[5])
@@ -101,10 +122,12 @@ function sortFilms(){
 	});
 }
 /**
+ * Создает массив с результатми всех фильмов.
  * Сортирует массив и возвращает наиболее подходяший фильм.
  * @return {[film]} возвращает обьект фильм.
  */
 function bestFilmForUser() {
+	userСhoices ();
 	sortFilms();
 	return filmsRanks[0].film;
 }
@@ -143,3 +166,21 @@ function pickFavoriteHero(pick){
 		userGenre.adventure=userGenre.adventure*0.9;
 	}
 }
+/*
+ *Чинит значения жанров которые нравятся человеку
+ *Округляя значение до двух чисел после запятой
+ *Возвращает значения в границы от 0 до 10
+ */
+function fixGenreStats(){
+	for(var key in userGenre){
+		if(userGenre[key]>10){
+			userGenre[key]=10;
+		}else if(userGenre[key]<0){
+			userGenre[key]=0;
+		}else{
+			userGenre[key]=Number((userGenre[key]).toFixed(2));
+		}
+	}
+}
+
+
