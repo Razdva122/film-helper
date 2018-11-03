@@ -4,9 +4,9 @@
  * 1а)Изменение коэфицентов фильма при ответе не нравится совсем
  *    жанр от 0 до 4 +0.5 от 6 до 10 - 0.5
  *    +++2.В каждый фильм внести 3 актера
- * 2а)Сделать вопрос на выбор актера(нравится,воздержусь,не нравится)
- * 2аа)Создать базу данных со всеми актерами
- * 2б)Создать базу юзера по актерам
+ *    +++2а)Сделать вопрос на выбор актера(нравится,воздержусь,не нравится)
+ *    +++2аа)Создать базу данных со всеми актерами
+ *    +++2б)Создать базу юзера по актерам
  * 2в)Учитывать актеров при подборе фильмов
  * 3.Сделать разделение фильмов на мужской,женский,семейный
  * 3а)Сделать вопрос какие пункты подходят человеку
@@ -16,13 +16,14 @@
 
 
 
-
+//Минимальное значение входит, максимальное нет
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
 var favoriteActors=[];//Актеры которые нравятся пользователю
 var dislikeActors=[];//Актеры которые не нравятся пользователю
+var randomActors=[];//Актеры которых предложим оценить пользователю
 var filmsRanks=[];//Массив фильмов с рейтенгом для пользователя
 var userGenre=new Object();//Параметры юзера по его запросам
 
@@ -48,16 +49,19 @@ angular.module("myApp",[])
  *                         желание юзера сходится с жанром фильма
  */
 
-function FilmResult(film,drama,comedy,action,fantasy,adventure){
+function FilmResult(film,drama,comedy,action,fantasy,adventure,actorsRating){
 	this.film=film;
 
-	this.drama=drama;
-	this.comedy=comedy;
-	this.action=action;
-	this.fantasy=fantasy;
-	this.adventure=adventure;
+	this.drama=Number(drama);
+	this.comedy=Number(comedy);
+	this.action=Number(action);
+	this.fantasy=Number(fantasy);
+	this.adventure=Number(adventure);
 
-	this.total=this.drama+this.comedy+this.action+this.fantasy+this.adventure;
+	this.actorsRating=actorsRating;
+
+	this.total=(this.drama+this.comedy+this.action
+		+this.fantasy+this.adventure)*actorsRating;
 }
 
 /**
@@ -80,8 +84,27 @@ function userСhoices () {
 		filmResult[4]=Math.abs(arrayFilms[i].fantasyRating-userGenre.fantasy).toFixed(2);
 		filmResult[5]=Math.abs(arrayFilms[i].adventureRating-userGenre.adventure).toFixed(2);
 
+		var favoriteRank=0;
+		var unfavoriteRank=0;
+
+		for(var counter1=0;counter1<favoriteActors.length;counter1++){
+			if(arrayFilms[i].actors.includes(favoriteActors[counter1])){
+				favoriteRank++;
+				console.log(favoriteRank);
+			}
+		}
+
+		for(var counter2=0;counter2<dislikeActors.length;counter2++){
+			if(arrayFilms[i].actors.includes(dislikeActors[counter2])){
+				unfavoriteRank++;
+			}
+		}
+
+		filmResult[6]=1+(favoriteRank*0.1)-(unfavoriteRank*0.1);
+		console.log(filmResult[6]+" Result");
+
 		var currentFilmResult=new FilmResult(filmResult[0],filmResult[1],
-			filmResult[2],filmResult[3],filmResult[4],filmResult[5])
+			filmResult[2],filmResult[3],filmResult[4],filmResult[5],filmResult[6])
 
 		filmsRanks.push(currentFilmResult);
 	}
@@ -139,31 +162,35 @@ function bestFilmForUser() {
  * 3-Купер(интерстеллар)
  * 4-Эйс Вентура
  */
-function pickFavoriteHero(pick){	
-	if(pick===1){
-		userGenre.drama=userGenre.drama*1.1;
-		userGenre.comedy=userGenre.comedy*0.9;
-		userGenre.action=userGenre.action*1;
-		userGenre.fantasy=userGenre.fantasy*0.9;
-		userGenre.adventure=userGenre.adventure*0.8;
-	}else if(pick===2){
+function pickFavoriteHero(pick){
+	if(pick==1){
 		userGenre.drama=userGenre.drama*0.9;
 		userGenre.comedy=userGenre.comedy*1.1;
-		userGenre.action=userGenre.action*0.8;
+		userGenre.action=userGenre.action*1;
 		userGenre.fantasy=userGenre.fantasy*1.1;
-		userGenre.adventure=userGenre.adventure*1;
-	}else if(pick===3){
-		userGenre.drama=userGenre.drama*0.8;
-		userGenre.comedy=userGenre.comedy*1.2;
-		userGenre.action=userGenre.action*1.1;
+		userGenre.adventure=userGenre.adventure*1.2;
+		favoriteActors.push("Джонни Депп");
+	}else if(pick==2){
+		userGenre.drama=userGenre.drama*1.1;
+		userGenre.comedy=userGenre.comedy*0.9;
+		userGenre.action=userGenre.action*1.2;
 		userGenre.fantasy=userGenre.fantasy*0.9;
 		userGenre.adventure=userGenre.adventure*1;
-	}else if(pick===4){
+		favoriteActors.push("Киану Ривз");
+	}else if(pick==3){
 		userGenre.drama=userGenre.drama*1.2;
 		userGenre.comedy=userGenre.comedy*0.8;
-		userGenre.action=userGenre.action*1.1;
+		userGenre.action=userGenre.action*0.9;
+		userGenre.fantasy=userGenre.fantasy*1.1;
+		userGenre.adventure=userGenre.adventure*1;
+		favoriteActors.push("Мэттью МакКонахи");
+	}else if(pick==4){
+		userGenre.drama=userGenre.drama*0.8;
+		userGenre.comedy=userGenre.comedy*1.2;
+		userGenre.action=userGenre.action*0.9;
 		userGenre.fantasy=userGenre.fantasy*1;
-		userGenre.adventure=userGenre.adventure*0.9;
+		userGenre.adventure=userGenre.adventure*1.1;
+		favoriteActors.push("Джим Керри");
 	}
 }
 /*
@@ -182,5 +209,25 @@ function fixGenreStats(){
 		}
 	}
 }
-
+function showRandomActors() {
+	randomActors=[];
+	for(;;){
+		var actor=arrayFilms[getRandomInt(0, arrayFilms.length)].actors[getRandomInt(0, 3)];
+		if(!randomActors.includes(actor)){
+			randomActors.push(actor);
+		}
+		if(randomActors.length===4){
+			break;
+		}
+	}
+}
+function pickFavoriteActor(result) {
+	for(var i=0;i<result.length;i++){
+		if(result[i]=="like"){
+			favoriteActors.push(randomActors[i]);
+		}else if(result[i]=="dislike"){
+			dislikeActors.push(randomActors[i]);
+		}
+	}
+}
 
