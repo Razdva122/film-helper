@@ -11,7 +11,7 @@
  *    +++ 3.Сделать разделение фильмов на мужской,женский,семейный
  *    +++3а)Сделать вопрос какие пункты подходят человеку
  *    +++3б)Учитывать эти пункты при подборе фильма
- * 4.Сделать вопрос на фильм каких годов хотел бы посмотреть человек
+ *    +++4.Сделать вопрос на фильм каких годов хотел бы посмотреть человек
  */
 
 
@@ -51,7 +51,7 @@ angular.module("myApp",[])
  */
 
 function FilmResult(film,drama,comedy,action,fantasy,adventure,
-	actorsRating,typeRating){
+	actorsRating,typeRating,yearsRating){
 	this.film=film;
 
 	this.drama=Number(drama);
@@ -64,8 +64,11 @@ function FilmResult(film,drama,comedy,action,fantasy,adventure,
 
 	this.typeRating=typeRating;
 
+	this.yearsRating=yearsRating;
+
 	this.total=(this.drama+this.comedy+this.action
-		+this.fantasy+this.adventure)*actorsRating*typeRating;
+		+this.fantasy+this.adventure)*actorsRating
+		*typeRating*yearsRating+(20*this.film.dislike);
 }
 
 /**
@@ -115,9 +118,15 @@ function userСhoices () {
 			filmResult[7]=1;
 		}
 
+		if(arrayFilms[i].year>userGenre.startYear && arrayFilms[i].year<userGenre.endYear){
+			filmResult[8]=0.8;
+		}else{
+			filmResult[8]=1;
+		}
+
 		var currentFilmResult=new FilmResult(filmResult[0],filmResult[1],
 			filmResult[2],filmResult[3],filmResult[4],filmResult[5],
-			filmResult[6],filmResult[7])
+			filmResult[6],filmResult[7],filmResult[8])
 
 		filmsRanks.push(currentFilmResult);
 	}
@@ -174,6 +183,37 @@ function userPickNextFilm(){
 	filmForUser++;
 	bestFilmForUser();
 }
+function dontLikeFilm(){
+	var currentFilm=filmsRanks[filmForUser].film;
+	for(var i=0;i<arrayFilms.length;i++){
+		if(filmsRanks[filmForUser].film.title===arrayFilms[i].title){
+			arrayFilms[i].dislike=true;
+		}
+	}
+	filmForUser=0;
+	console.log(currentFilm);
+	userGenre.drama=userGenre.drama+reworkRating(currentFilm.dramaRating);
+	userGenre.comedy=userGenre.comedy+reworkRating(currentFilm.comedyRating);
+	userGenre.action=userGenre.action+reworkRating(currentFilm.actionRating);
+	userGenre.fantasy=userGenre.fantasy+reworkRating(currentFilm.fantasyRating);
+	userGenre.adventure=userGenre.adventure+reworkRating(currentFilm.adventureRating);
+	fixGenreStats();
+}
+/**
+ * Изменяем все рейтинги если человеку не понравился фильм
+ * @param  {[Number]} rating получаем рейтинг жанра
+ * @return {[Number]}        возвращаем изменение для этого ранга
+ */
+function reworkRating(rating){
+	if(rating>6){
+		return -0.5;
+	}else if(rating>4){
+		return 0;
+	}else{
+		return 0.5;
+	}
+
+}
 /**
  * Уточняет коэфиценты жанров предлагая человеку выбрать главного героя.
  * @param {number} [pick]выбор гг, который подходит по духу человеку
@@ -221,12 +261,14 @@ function pickFavoriteHero(pick){
  */
 function fixGenreStats(){
 	for(var key in userGenre){
-		if(userGenre[key]>10){
-			userGenre[key]=10;
-		}else if(userGenre[key]<0){
-			userGenre[key]=0;
-		}else{
-			userGenre[key]=Number((userGenre[key]).toFixed(2));
+		if(!isNaN(userGenre[key])){
+			if(userGenre[key]>10){
+				userGenre[key]=10;
+			}else if(userGenre[key]<0){
+				userGenre[key]=0;
+			}else{
+				userGenre[key]=Number((userGenre[key]).toFixed(2));
+			}
 		}
 	}
 }
@@ -269,4 +311,12 @@ function pickFavoriteActor(result) {
  */
 function pickType(type){
 	userGenre.type=type;
+}
+/**
+ * Получаем данные от пользователя каких годов ему интересны фильмы
+ * @param  {[array]} years Массив на 0 позиции от какого года и на 1 до какого
+ */
+function pickYears(years) {
+	userGenre.startYear=years[0];
+	userGenre.endYear=years[1];
 }

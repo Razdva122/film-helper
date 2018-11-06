@@ -27,6 +27,8 @@ function Film(title,year,rating,info,dramaRating,comedyRating,
 
 	this.actors=actors;
 
+	this.dislike=false;
+
 	this.typeGirls=type[0];
 	this.typeGuys=type[1];
 	this.typeFamily=type[2];
