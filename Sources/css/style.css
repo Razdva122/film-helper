@@ -126,3 +126,38 @@ body {
 .menu ul a{
 	font-size: 20px;
 }
+
+.sliders{
+	display: flex;
+	flex-direction: row;
+	
+}
+
+.genre{
+	display: inline-block;
+	width:100px;
+	position: relative;
+}	
+
+.genre p{
+	width:100px;
+	display: inline-block;
+  	border: 1px solid red;
+    padding: 1px;
+  	text-align: center;
+}
+
+.genre div{
+	margin-left:auto; 
+	margin-right:auto;
+	height:200px;
+}
+
+input.genrePick, textarea { 
+	background: none; 
+	border:0; 
+	color:#f6931f;
+	font-weight:bold; 
+	width: 10px;
+
+}

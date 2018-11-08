@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Slider - Vertical slider</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link href="Sources/css/style.css" rel="stylesheet">
+  <!--Подключение Jquery + Angular-->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <!--Подключение Js Файлов-->
+  <script src="Sources/js/films_info.js"></script>
+  <script src="Sources/js/films.js"></script>  
+  <script src="Sources/js/main.js"></script>
+  <script>
+  $( function() {
+    $( "#slider-vertical" ).slider({
+      orientation: "vertical",
+      range: "min",
+      min: 0,
+      max: 10,
+      value: 5,
+      slide: function( event, ui ) {
+        $( "#amount" ).val( ui.value );
+      }
+    });
+    $( "#amount" ).val( $( "#slider-vertical" ).slider( "value" ) );
+    $( "#slider-vertical2" ).slider({
+      orientation: "vertical",
+      range: "min",
+      min: 0,
+      max: 10,
+      value: 5,
+      slide: function( event, ui ) {
+        $( "#amount2" ).val( ui.value );
+      }
+    });
+    $( "#amount2" ).val( $( "#slider-vertical2" ).slider( "value" ) );
+        $( "#slider-vertical3" ).slider({
+      orientation: "vertical",
+      range: "min",
+      min: 0,
+      max: 10,
+      value: 5,
+      slide: function( event, ui ) {
+        $( "#amount3" ).val( ui.value );
+      }
+    });
+    $( "#amount3" ).val( $( "#slider-vertical3" ).slider( "value" ) );
+    $( "#slider-vertical4" ).slider({
+      orientation: "vertical",
+      range: "min",
+      min: 0,
+      max: 10,
+      value: 5,
+      slide: function( event, ui ) {
+        $( "#amount4" ).val( ui.value );
+      }
+    });
+    $( "#amount4" ).val( $( "#slider-vertical4" ).slider( "value" ) );
+    $( "#slider-vertical5" ).slider({
+      orientation: "vertical",
+      range: "min",
+      min: 0,
+      max: 10,
+      value: 5,
+      slide: function( event, ui ) {
+        $( "#amount5" ).val( ui.value );
+      }
+    });
+    $( "#amount5" ).val( $( "#slider-vertical5" ).slider( "value" ) );
+  } );
+  </script>
+</head>
+<body>
+<div class="test">
+	<div class="sliders">
+		<div id="slider1" class="genre">
+			<p>
+		  	<label for="amount">Драма:</label>
+		  	<input type="text" id="amount" class="genrePick" readonly>
+			</p>	 
+			<div id="slider-vertical" style="height:200px;"></div>
+		</div>
+		<div id="slider2" class="genre">
+			<p>
+			  <label for="amount2">Комедия:</label>
+			  <input type="text" id="amount2" class="genrePick" readonly>
+			</p>
+			<div id="slider-vertical2" style="height:200px;"></div>
+		</div>
+		<div id="slider3" class="genre">
+			<p>
+			  <label for="amount3">Экшен:</label>
+			  <input type="text" id="amount3" class="genrePick" readonly>
+			</p>
+			<div id="slider-vertical3" style="height:200px;"></div>
+		</div>
+		<div id="slider4" class="genre">
+			<p>
+			  <label for="amount4">Фантастика:</label>
+			  <input type="text" id="amount4" class="genrePick" readonly>
+			</p>
+			<div id="slider-vertical4" style=""></div>
+		</div>
+		<div id="slider5" class="genre">
+			<p>
+			  <label for="amount5">Приключение:</label>
+			  <input type="text" id="amount5" class="genrePick" readonly>
+			</p>
+			<div id="slider-vertical5" style="height:200px;"></div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
