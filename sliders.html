@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html ng-app="myApp">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -74,7 +74,7 @@
   } );
   </script>
 </head>
-<body>
+<body ng-controller="firstCtrl">
 <div class="test">
 	<div class="sliders">
 		<div id="slider1" class="genre">
@@ -113,6 +113,7 @@
 			<div id="slider-vertical5" style="height:200px;"></div>
 		</div>
 	</div>
+	<button id="startTest" ng-click="pickGenresButton()">Готово!</button>
 </div>
 </body>
 </html>

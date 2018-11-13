@@ -33,10 +33,25 @@ $(document).ready(function(){
 });
 angular.module("myApp",[])
 .controller("firstCtrl",function ($scope) {
-	$scope.randomFilm = function(){
-		//var randomNumber=getRandomInt(0,arrayFilms.length);
-		//$scope.currentFilm=arrayFilms[randomNumber];
+	$scope.showFilm = function(){
 		$scope.currentFilm=bestFilmForUser();
+	}
+	$scope.pickGenresButton = function(){
+			pickYourGenre($('#slider-vertical').slider("option", "value"),$('#slider-vertical2').slider("option", "value"),
+				$('#slider-vertical3').slider("option", "value"),
+				$('#slider-vertical4').slider("option", "value"),
+				$('#slider-vertical5').slider("option", "value"));
+	}
+	$scope.pickAgesButton = function(){
+		if($("#mens").is(':checked')){
+			pickType("Мужской");
+		}else if($("#girls").is(':checked')){
+			pickType("Женский");
+		}else if($("#family").is(':checked')){
+			pickType("Семейный");
+		}else{
+			pickType("null");
+		}
 	}
 });
 
@@ -183,6 +198,9 @@ function userPickNextFilm(){
 	filmForUser++;
 	bestFilmForUser();
 }
+/*Ставит дизлайк на фильм(сильно понижает его в рейтинге)
+ *Изменяет коэфиценты жанров
+ */
 function dontLikeFilm(){
 	var currentFilm=filmsRanks[filmForUser].film;
 	for(var i=0;i<arrayFilms.length;i++){
@@ -251,6 +269,8 @@ function pickFavoriteHero(pick){
 		userGenre.fantasy=userGenre.fantasy*1;
 		userGenre.adventure=userGenre.adventure*1.1;
 		favoriteActors.push("Джим Керри");
+	}else{
+		return;
 	}
 	fixGenreStats();
 }
