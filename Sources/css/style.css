@@ -56,6 +56,19 @@ body {
 	top:15%;
 	left: 50%;
 	margin-left: -250px;
+	display: flex;
+	flex-direction: row;
+}
+
+.ages{
+	position: absolute;
+	width: 900px;
+	top:15%;
+	left: 50%;
+	margin-left: -450px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
 }
 
 .test{
@@ -134,10 +147,21 @@ body {
 	font-size: 20px;
 }
 
-.sliders{
-	display: flex;
-	flex-direction: row;
-	
+.pick{
+	display: inline-block;
+	width:200px;
+	position: relative;
+}
+
+.pick img{
+	border: 3px solid black;
+}
+
+.pick p{
+	font-size: 18px;
+	position: absolute;
+	left: 50%;
+	margin-left: -50px;
 }
 
 .genre{
