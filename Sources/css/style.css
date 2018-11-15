@@ -51,6 +51,15 @@ body {
 	height: 50px;
 }
 
+#startTestHeroes{
+	position: absolute;
+	top:90%;
+	left: 50%;
+	margin-left: -100px;
+	width: 200px; 
+	height: 50px;
+}
+
 .sliders{
 	position: absolute;
 	top:15%;
@@ -66,6 +75,26 @@ body {
 	top:15%;
 	left: 50%;
 	margin-left: -450px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.title{
+	position: absolute;
+	top:5%;
+	left: 50%;
+	margin-left: -300px;
+	text-align: center;
+	font-size: 40px; 
+}
+
+.heroes{
+	position: absolute;
+	width: 1200px;
+	top:22%;
+	left: 50%;
+	margin-left: -600px;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
@@ -157,11 +186,23 @@ body {
 	border: 3px solid black;
 }
 
-.pick p{
+.heroinfo{
+	text-align:center;
+	width: 256px;
+	font-size: 14px;
+}
+
+.optionHeroes{
+	bottom: 5px;
+	text-align:center;
+	width: 256px;
 	font-size: 18px;
-	position: absolute;
-	left: 50%;
-	margin-left: -50px;
+}
+
+.option {
+	text-align:center;
+	width: 206px;
+	font-size: 18px;
 }
 
 .genre{
