@@ -1,0 +1,56 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Slider - Vertical slider</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link href="Sources/css/style.css" rel="stylesheet">
+  <!--Подключение Jquery + Angular-->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <!--Подключение Js Файлов-->
+  <script src="Sources/js/films_info.js"></script>
+  <script src="Sources/js/films.js"></script>  
+  <script src="Sources/js/main.js"></script>
+</head>
+<body ng-controller="firstCtrl">
+  <div class="test">
+    <div class="actorsTitle">
+      Оцените актера.
+    </div>
+    <div class="heroes">
+      <div class="pick">
+        <p class="optionActors">{{inBrowserActors[0].name}}</p>
+        <img id="firstActor" class="actor">
+        <p class="actorinfo">{{inBrowserActors[0].genres}}
+        {{inBrowserActors[0].bestFilms}}</p>
+        
+      </div>
+      <div class="pick">
+        <p class="optionActors">{{inBrowserActors[1].name}}</p>
+        <img id="secondActor" class="actor">
+        <p class="actorinfo">{{inBrowserActors[1].genres}}
+        {{inBrowserActors[1].bestFilms}}</p>
+        
+      </div>
+      <div class="pick">
+        <p class="optionActors">{{inBrowserActors[2].name}}</p>
+        <img id="thirdActor" class="actor">
+        <p class="actorinfo">{{inBrowserActors[2].genres}}
+        {{inBrowserActors[2].bestFilms}}</p>      
+      </div>
+      <div class="pick">
+        <p class="optionActors">{{inBrowserActors[3].name}}</p>
+        <img id="fourthActor" class="actor">
+        <p class="actorinfo">{{inBrowserActors[3].genres}}
+        {{inBrowserActors[3].bestFilms}}</p>   
+      </div>
+    </div>
+  	<button class="randomActors" ng-click="generateRandomActors()">Генерация Актеров</button>
+    <button class="doneTest" ng-click="pickAgesButton()">Готово</button>
+    </div>
+  </div>
+</body>
+</html>

@@ -42,7 +42,7 @@ body {
 	padding: 100px 0 50px;
 }
 
-#startTest{
+.startTest{
 	position: absolute;
 	top:70%;
 	left: 50%;
@@ -51,7 +51,7 @@ body {
 	height: 50px;
 }
 
-#startTestHeroes{
+.startTestHeroes{
 	position: absolute;
 	top:90%;
 	left: 50%;
@@ -59,6 +59,28 @@ body {
 	width: 200px; 
 	height: 50px;
 }
+
+.randomActors{
+	position: absolute;
+	top:90%;
+	left: 30%;
+	width: 200px; 
+	height: 50px;
+}
+
+.actor{
+	width: 200px;
+	height: 300px;
+}
+
+.doneTest{
+	position: absolute;
+	top:90%;
+	left: 60%;
+	width: 200px; 
+	height: 50px;
+}
+
 
 .sliders{
 	position: absolute;
@@ -71,13 +93,18 @@ body {
 
 .ages{
 	position: absolute;
-	width: 900px;
+	width: 1200px;
 	top:15%;
 	left: 50%;
-	margin-left: -450px;
+	margin-left: -600px;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
+}
+
+.ages .pick img{
+	width: 250px;
+	height: 250px;
 }
 
 .title{
@@ -85,6 +112,15 @@ body {
 	top:5%;
 	left: 50%;
 	margin-left: -300px;
+	text-align: center;
+	font-size: 40px; 
+}
+
+.actorsTitle{
+	position: absolute;
+	top:5%;
+	left: 50%;
+	margin-left: -154px;
 	text-align: center;
 	font-size: 40px; 
 }
@@ -102,8 +138,8 @@ body {
 
 .test{
 	width: 100%;
-	height: 600px;
-	background: green;
+	height: 800px;
+	background: #61c3ff;
 	position: relative;
 }
 
@@ -179,30 +215,78 @@ body {
 .pick{
 	display: inline-block;
 	width:200px;
-	position: relative;
 }
 
 .pick img{
+	position: relative;
 	border: 3px solid black;
 }
 
 .heroinfo{
+	position: relative;
+	top:12px;
 	text-align:center;
 	width: 256px;
 	font-size: 14px;
 }
 
-.optionHeroes{
-	bottom: 5px;
+.actorinfo{
+	text-align:center;
+	width: 200px;
+	font-size: 14px;
+}
+
+.john{
+	position: relative;
+	left:72px;
+}
+
+.jack{
+	position: relative;
+	left:15px;
+}
+
+.cooper{
+	position: relative;
+	left:50px;
+}
+
+.ventura{
+	position: relative;
+	left:58px;
+}
+
+.nonePick{
+	position: relative;
+	left:80px;
+}
+
+.familyPick{
+	position: relative;
+	left:64px;
+}
+
+.girlsPick, .mensPick{
+	position: relative;
+	left:71px;
+}
+
+.option{
+	position: relative;
+	top: 8px;
+	bottom: 8px;
 	text-align:center;
 	width: 256px;
 	font-size: 18px;
 }
 
-.option {
+.optionActors{
+	position: relative;
+	bottom: 8px;
 	text-align:center;
-	width: 206px;
-	font-size: 18px;
+	width: 200px;
+	font-size: 17px;
+	font-weight: bold;
 }
 
 .genre{
@@ -232,4 +316,47 @@ input.genrePick, textarea {
 	font-weight:bold; 
 	width: 10px;
 
+}
+
+.radio {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  margin: 10px 0 0 7px;
+}
+.radio + label {
+  position: relative;
+  padding: 0 0 0 35px;
+  text-align: center;
+  cursor: pointer;
+}
+.radio + label:before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  border: 1px solid #CDD1DA;
+  border-radius: 50%;
+  background: #FFF;
+}
+.radio + label:after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #9FD468;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.5);
+  opacity: 0;
+  transition: .2s;
+}
+.radio:checked + label:after {
+  opacity: 1;
+}
+.radio:focus + label:before {
+  box-shadow: 0 0 0 3px rgba(255,255,0,.7);
 }

@@ -21,30 +21,42 @@
       Какой герой ближе вам по духу?
     </div>
     <div class="heroes">
-      <div class="pick">
-        <p class="optionHeroes"><input name="hero" type="radio" id="jack" value="jack">Капитан Джек Воробей</p>
+      <div class="pick">     
         <img src="Sources/img/questions/jack.png" alt="Капитан Джек воробей">
-        <p class="heroinfo">Джек — остроумен, находчив, предпочитает избегать опасных ситуаций.</p>
+        <div class="jack">
+          <input name="hero" type="radio" class="radio" id="radiojack" value="jack"/>
+          <label for="radiojack" class="option">Капитан Джек Воробей</label>
+        </div>
+        <p class="heroinfo">Остроумен, находчив, предпочитает избегать опасных ситуаций.</p>
         
       </div>
       <div class="pick">
-        <p class="optionHeroes"><input name="hero" type="radio" id="john" value="john"> Джон Уик</p>
         <img src="Sources/img/questions/john.png" alt="Джон Уик">
-        <p class="heroinfo"> Джон Уик – непоколебимый герой, утративший все и не стремящийся к лучшей жизни.</p>
+        <div class="john">
+          <input name="hero" type="radio" class="radio" id="radiojohn" value="john"/>
+          <label for="radiojohn" class="option">Джон Уик</label>
+        </div>
+        <p class="heroinfo"> Непоколебимый герой, утративший все и не стремящийся к лучшей жизни.</p>
         
       </div>
       <div class="pick">
-        <p class="optionHeroes"><input name="hero" type="radio" id="cooper" value="cooper">Джозеф Купер</p>
         <img src="Sources/img/questions/cooper.png" alt="Купер">
-        <p class="heroinfo">Джозеф Купер - пилот, инженер, для которого самое главное в жизни - семья.</p>      
+        <div class="cooper">
+          <input name="hero" type="radio" class="radio" id="radiocooper" value="cooper"/>
+          <label for="radiocooper" class="option">Джозеф Купер</label>
+        </div>
+        <p class="heroinfo">Пилот, инженер, для которого самое главное в жизни - семья.</p>      
       </div>
       <div class="pick">
-        <p class="optionHeroes"><input name="hero" type="radio" id="ventura" value="ventura">Эйс Вентура</p>
         <img src="Sources/img/questions/ventura.png" alt="Эйс Вентура">
-        <p class="heroinfo">Эйс Вентура - частный сыщик по розыску домашних животных, большой любитель братьев наших меньших.</p>   
+        <div class="ventura">
+          <input name="hero" type="radio" class="radio" id="radioventura" value="ventura"/>
+          <label for="radioventura" class="option">Эйс Вентура</label>
+        </div>
+        <p class="heroinfo">Частный сыщик по розыску домашних животных, большой любитель братьев наших меньших.</p>   
       </div>
     </div>
-  	<button id="startTestHeroes" ng-click="pickAgesButton()">Готово!</button>
+  	<button class="startTestHeroes" ng-click="pickHeroButton()">Готово!</button>
     </div>
   </div>
 </body>

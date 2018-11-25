@@ -53,6 +53,30 @@ angular.module("myApp",[])
 			pickType("null");
 		}
 	}
+	$scope.generateRandomActors = function(){
+		showRandomActors();
+		let currentActors=getActorsFromBase();
+		$scope.inBrowserActors=currentActors;
+		let nameOfImage1="Sources/img/actors/"+currentActors[0].photo+".jpg";
+		$("#firstActor").attr("src",nameOfImage1);
+		let nameOfImage2="Sources/img/actors/"+currentActors[1].photo+".jpg";
+		$("#secondActor").attr("src",nameOfImage2);
+		let nameOfImage3="Sources/img/actors/"+currentActors[2].photo+".jpg";
+		$("#thirdActor").attr("src",nameOfImage3);
+		let nameOfImage4="Sources/img/actors/"+currentActors[3].photo+".jpg";
+		$("#fourthActor").attr("src",nameOfImage4);
+	}
+	$scope.pickHeroButton =function() {
+		if($("#radiojack").is(':checked')){
+			pickFavoriteHero(1);
+		}else if($("#radiojohn").is(':checked')){
+			pickFavoriteHero(2);
+		}else if($("#radiocooper").is(':checked')){
+			pickFavoriteHero(3);
+		}else if($("#radioventura").is(':checked')){
+			pickFavoriteHero(4);
+		}
+	}
 });
 
 /**
@@ -308,6 +332,22 @@ function showRandomActors() {
 			break;
 		}
 	}
+}
+/**
+ * Используем список имен, случайных актеров
+ * Находим 
+ * @return {[array]} возвращает массив обьектов типа Актер
+ */
+function getActorsFromBase(){
+	var actorBase=[];
+	for (var y=0;y<randomActors.length;y++){
+		for (var i=0;i<arrayActors.length;i++){
+			if(arrayActors[i].name===randomActors[y]){
+				actorBase.push(arrayActors[i]);
+			}
+		}
+	}
+	return actorBase;
 }
 /*
  * Функция выбора любимых/нелюбимых актеров

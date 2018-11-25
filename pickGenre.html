@@ -20,22 +20,34 @@
     <div class="ages">
       <div class="pick">
         <img src="Sources/img/questions/mens.png" alt="Мужские фильмы">
-        <p class="option"><input name="age" type="radio" id="mens" value="Мужской"> Мужской</p>
+        <div class="mensPick">
+          <input name="age" type="radio" class="radio" id="mens" value="Мужской"/>
+          <label for="mens" class="option">Мужской</label>
+        </div>
       </div>
       <div class="pick">
         <img src="Sources/img/questions/girls.png" alt="Женские фильмы">
-        <p class="option"><input name="age" type="radio" id="girls" value="Женский"> Женский</p>
+        <div class="girlsPick">
+          <input name="age" type="radio" class="radio" id="girls" value="Женский"/>
+          <label for="girls" class="option">Женский</label>
+        </div>
       </div>
       <div class="pick">
         <img src="Sources/img/questions/family.png" alt="Семейные фильмы">
-        <p class="option"><input name="age" type="radio" id="family" value="Семейный"> Семейный</p>
+        <div class="familyPick">
+          <input name="age" type="radio" class="radio" id="family" value="Семейный"/>
+          <label for="family" class="option">Семейный</label>
+        </div>
       </div>
       <div class="pick">
         <img src="Sources/img/questions/null.png" alt="Фильмы для всех">
-        <p class="option"><input name="age" type="radio" id="none" value="none">Любой</p>
+        <div class="nonePick">
+          <input name="age" type="radio" class="radio" id="none" value="none"/>
+          <label for="none" class="option">Любой</label>
+        </div>
       </div>
     </div>
-  	<button id="startTest" ng-click="pickAgesButton()">Готово!</button>
+  	<button class="startTest" ng-click="pickAgesButton()">Готово!</button>
     </div>
   </div>
 </body>
