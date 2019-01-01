@@ -43,6 +43,9 @@ angular.module("myApp",[])
 				$('#slider-vertical5').slider("option", "value"));
 	}
 	$scope.pickAgesButton = function(){
+			pickYears([$("#slider-range").slider("values",0),$("#slider-range").slider("values",1)]);
+	}
+	$scope.pickTypeButton = function(){
 		if($("#mens").is(':checked')){
 			pickType("Мужской");
 		}else if($("#girls").is(':checked')){
@@ -65,6 +68,38 @@ angular.module("myApp",[])
 		$("#thirdActor").attr("src",nameOfImage3);
 		let nameOfImage4="Sources/img/actors/"+currentActors[3].photo+".jpg";
 		$("#fourthActor").attr("src",nameOfImage4);
+	}
+	$scope.likeDislikeActors = function(){
+		let resultLikes=[];
+		if($("#likeOne").is(':checked')){
+			resultLikes.push("like");
+		}else if($("#dislikeOne").is(':checked')){
+			resultLikes.push("dislike");
+		}else{
+			resultLikes.push("null");
+		}
+		if($("#likeTwo").is(':checked')){
+			resultLikes.push("like");
+		}else if($("#dislikeTwo").is(':checked')){
+			resultLikes.push("dislike");
+		}else{
+			resultLikes.push("null");
+		}
+		if($("#likeThree").is(':checked')){
+			resultLikes.push("like");
+		}else if($("#dislikeThree").is(':checked')){
+			resultLikes.push("dislike");
+		}else{
+			resultLikes.push("null");
+		}if($("#likeFour").is(':checked')){
+			resultLikes.push("like");
+		}else if($("#dislikeFour").is(':checked')){
+			resultLikes.push("dislike");
+		}else{
+			resultLikes.push("null");
+		}
+		pickFavoriteActor(resultLikes);
+
 	}
 	$scope.pickHeroButton =function() {
 		if($("#radiojack").is(':checked')){

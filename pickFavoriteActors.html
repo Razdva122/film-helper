@@ -24,32 +24,96 @@
       <div class="pick">
         <p class="optionActors">{{inBrowserActors[0].name}}</p>
         <img id="firstActor" class="actor">
-        <p class="actorinfo">{{inBrowserActors[0].genres}}
-        {{inBrowserActors[0].bestFilms}}</p>
+        <div class="userPicks">
+          <div class="likeDislike">
+            <input name="firstActorlike" type="radio" class="radio" id="likeOne" value="like"/>
+            <label for="likeOne" class="option"><img class="like" src="Sources/img/like.png" alt="Лайк"></label>
+          </div>
+          <div class="likeDislike">
+            <input name="firstActorlike" type="radio" class="radio" id="dislikeOne" value="dislike"/>
+            <label for="dislikeOne" class="option"><img class="like" src="Sources/img/dislike.png" alt="Дизлайк"></label>
+          </div>
+        </div>
+        <p class="titleactor">Жанры:</p>
+        <p class="actorinfo">{{inBrowserActors[0].genres}}</p> 
+        <p class="titleactor">Лучшие фильмы:</p>
+        <p class="bestActorFilms">
+          1.{{inBrowserActors[0].bestFilms[0]}}<br>
+          2.{{inBrowserActors[0].bestFilms[1]}}<br>
+          3.{{inBrowserActors[0].bestFilms[2]}}<br>
+        </p>
         
       </div>
       <div class="pick">
         <p class="optionActors">{{inBrowserActors[1].name}}</p>
         <img id="secondActor" class="actor">
-        <p class="actorinfo">{{inBrowserActors[1].genres}}
-        {{inBrowserActors[1].bestFilms}}</p>
+        <div class="userPicks">
+          <div class="likeDislike">
+            <input name="secondActorlike" type="radio" class="radio" id="likeTwo" value="like"/>
+            <label for="likeTwo" class="option"><img class="like" src="Sources/img/like.png" alt="Лайк"></label>
+          </div>
+          <div class="likeDislike">
+            <input name="secondActorlike" type="radio" class="radio" id="dislikeTwo" value="dislike"/>
+            <label for="dislikeTwo" class="option"><img class="like" src="Sources/img/dislike.png" alt="Дизлайк"></label>
+          </div>
+        </div>
+        <p class="titleactor">Жанры:</p>
+        <p class="actorinfo">{{inBrowserActors[1].genres}}</p> 
+        <p class="titleactor">Лучшие фильмы:</p>
+        <p class="bestActorFilms">
+          1.{{inBrowserActors[1].bestFilms[0]}}<br>
+          2.{{inBrowserActors[1].bestFilms[1]}}<br>
+          3.{{inBrowserActors[1].bestFilms[2]}}<br>
+        </p>
         
       </div>
       <div class="pick">
         <p class="optionActors">{{inBrowserActors[2].name}}</p>
         <img id="thirdActor" class="actor">
-        <p class="actorinfo">{{inBrowserActors[2].genres}}
-        {{inBrowserActors[2].bestFilms}}</p>      
+        <div class="userPicks">
+          <div class="likeDislike">
+            <input name="thirdActorlike" type="radio" class="radio" id="likeThree" value="like"/>
+            <label for="likeThree" class="option"><img class="like" src="Sources/img/like.png" alt="Лайк"></label>
+          </div>
+          <div class="likeDislike">
+            <input name="thirdActorlike" type="radio" class="radio" id="dislikeThree" value="dislike"/>
+            <label for="dislikeThree" class="option"><img class="like" src="Sources/img/dislike.png" alt="Дизлайк"></label>
+          </div>
+        </div>
+        <p class="titleactor">Жанры:</p>
+        <p class="actorinfo">{{inBrowserActors[2].genres}}</p> 
+        <p class="titleactor">Лучшие фильмы:</p>
+        <p class="bestActorFilms">
+          1.{{inBrowserActors[2].bestFilms[0]}}<br>
+          2.{{inBrowserActors[2].bestFilms[1]}}<br>
+          3.{{inBrowserActors[2].bestFilms[2]}}<br>
+        </p>      
       </div>
       <div class="pick">
         <p class="optionActors">{{inBrowserActors[3].name}}</p>
         <img id="fourthActor" class="actor">
-        <p class="actorinfo">{{inBrowserActors[3].genres}}
-        {{inBrowserActors[3].bestFilms}}</p>   
+        <div class="userPicks">
+          <div class="likeDislike">
+            <input name="fourthActorlike" type="radio" class="radio" id="likeFour" value="like"/>
+            <label for="likeFour" class="option"><img class="like" src="Sources/img/like.png" alt="Лайк"></label>
+          </div>
+          <div class="likeDislike">
+            <input name="fourthActorlike" type="radio" class="radio" id="dislikeFour" value="dislike"/>
+            <label for="dislikeFour" class="option"><img class="like" src="Sources/img/dislike.png" alt="Дизлайк"></label>
+          </div>
+        </div>
+        <p class="titleactor">Жанры:</p>
+        <p class="actorinfo">{{inBrowserActors[3].genres}}</p> 
+        <p class="titleactor">Лучшие фильмы:</p>
+        <p class="bestActorFilms">
+          1.{{inBrowserActors[3].bestFilms[0]}}<br>
+          2.{{inBrowserActors[3].bestFilms[1]}}<br>
+          3.{{inBrowserActors[3].bestFilms[2]}}<br>
+        </p>
       </div>
     </div>
   	<button class="randomActors" ng-click="generateRandomActors()">Генерация Актеров</button>
-    <button class="doneTest" ng-click="pickAgesButton()">Готово</button>
+    <button class="doneTest" ng-click="likeDislikeActors()">Готово</button>
     </div>
   </div>
 </body>

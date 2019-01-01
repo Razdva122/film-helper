@@ -1,0 +1,49 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Slider - Vertical slider</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link href="Sources/css/style.css" rel="stylesheet">
+  <!--Подключение Jquery + Angular-->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <!--Подключение Js Файлов-->
+  <script src="Sources/js/films_info.js"></script>
+  <script src="Sources/js/films.js"></script>  
+  <script src="Sources/js/main.js"></script>
+    <script>
+  $( function() {
+    $( "#slider-range" ).slider({
+      range: true,
+      min: 1950,
+      max: 2019,
+      values: [ 1990, 2019 ],
+      slide: function( event, ui ) {
+        $( "#amount" ).val(  ui.values[0] +" - " + ui.values[1] );
+      }
+    });
+    $( "#amount" ).val($( "#slider-range" ).slider( "values", 0 ) +" - " + $( "#slider-range" ).slider( "values", 1 ) );
+  } );
+  </script>
+</head>
+<body ng-controller="firstCtrl">
+  <div class="test">
+    <div class="agesTitle">
+      Фильмы каких годов вам бы хотелось посмотреть?
+    </div>
+    <div class="imageAges">
+      <img src="Sources/img/kinolenta.jpg" style="width:600px;height: 430px;">
+    </div>
+    <div class="slidersYears">
+    <p class="infoYears">
+      <input type="text" id="amount" class="yearsPick" readonly>
+    </p>
+    <div id="slider-range" style="width:600px;"></div>
+    </div>
+    <button class="startTestHeroes" ng-click="pickAgesButton()">Готово!</button>
+  </div>
+</body>
+</html>

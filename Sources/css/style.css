@@ -91,6 +91,27 @@ body {
 	flex-direction: row;
 }
 
+.slidersYears{
+	position: absolute;
+	top:70%;
+	left: 50%;
+	margin-left: -300px;
+}
+
+.imageAges{
+	position: absolute;
+	top:11%;
+	left: 50%;
+	margin-left: -300px;
+}
+
+.infoYears{
+	position: relative;
+	left:245px;
+	bottom:15px;
+	font-size:25px;
+}
+
 .ages{
 	position: absolute;
 	width: 1200px;
@@ -107,11 +128,27 @@ body {
 	height: 250px;
 }
 
+.pick .like {
+	width: 50px;
+	height: 50px;
+	border: none;
+	bottom: -18px;
+}
+
 .title{
 	position: absolute;
 	top:5%;
 	left: 50%;
 	margin-left: -300px;
+	text-align: center;
+	font-size: 40px; 
+}
+
+.agesTitle{
+	position: absolute;
+	top:5%;
+	left: 50%;
+	margin-left: -425px;
 	text-align: center;
 	font-size: 40px; 
 }
@@ -235,6 +272,17 @@ body {
 	width: 200px;
 	font-size: 14px;
 }
+.bestActorFilms{
+	width: 200px;
+	font-size: 12px;
+}
+
+.titleactor{
+	text-align:center;
+	width: 200px;
+	font-size: 14px;
+	font-weight: bold;
+}
 
 .john{
 	position: relative;
@@ -271,6 +319,16 @@ body {
 	left:71px;
 }
 
+.likeDislike{
+	
+}
+.userPicks{
+	position:relative;
+	display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    bottom: 25px;
+}
 .option{
 	position: relative;
 	top: 8px;
@@ -315,6 +373,15 @@ input.genrePick, textarea {
 	color:#f6931f;
 	font-weight:bold; 
 	width: 10px;
+
+}
+
+input.yearsPick, textarea { 
+	background: none; 
+	border:0; 
+	color:#f6931f;
+	font-weight:bold; 
+	font-size: inherit;
 
 }
 
