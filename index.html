@@ -6,21 +6,25 @@
 	<title>Film Helper - поможим решить что посмотреть сегодня!</title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
+	<!--Подключение Слайдеров-->
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<!--Подключение Css-->
-	<link href="Sources/css/style.css" rel="stylesheet">
+	<link href="sources/css/style.css" rel="stylesheet">
 	<!--Подключение Jquery + Angular-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <!--Подключение Js Файлов-->
-    <script src="Sources/js/films_info.js"></script>
-    <script src="Sources/js/films.js"></script>  
-    <script src="Sources/js/main.js"></script>
+    <script src="sources/js/films_info.js"></script>
+    <script src="sources/js/films.js"></script>  
+    <script src="sources/js/main.js"></script>
+    <script src="sources/js/sliders.js"></script>
     <!--Подключение Favicon-->
-    <link rel="apple-touch-icon" sizes="76x76" href="Sources/img/favicon/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="Sources/img/favicon/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="Sources/img/favicon/favicon-16x16.png">
-	<link rel="manifest" href="Sources/img/favicon/site.webmanifest">
-	<link rel="mask-icon" href="Sources/img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="apple-touch-icon" sizes="76x76" href="sources/img/favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="sources/img/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="sources/img/favicon/favicon-16x16.png">
+	<link rel="manifest" href="sources/img/favicon/site.webmanifest">
+	<link rel="mask-icon" href="sources/img/favicon/safari-pinned-tab.svg" color="#5bbad5">
 	<meta name="msapplication-TileColor" content="#da532c">
 	<meta name="theme-color" content="#ffffff">    
 </head>
@@ -32,7 +36,7 @@
 	<header class="header">
 		<div class="row">
 			<div class="logoImg">
-				<img src="Sources/img/logo.png" id="logo">
+				<img src="sources/img/logo.png" id="logo">
 			</div>
 			<nav class="menu">
 				<ul>
@@ -62,12 +66,8 @@
 	</header><!-- .header-->
 
 	<main class="content">
-		<div class="test">
-			<h1>{{currentFilm.title}}</h1>
-			<h2>{{currentFilm.year}}</h2>
-			<h3>{{currentFilm.rating}}</h3>
-			<h4>{{currentFilm.info}}</h4>
-			<button class="startTest" ng-click="showFilm()">Делай, ТЕСТ!</button>
+		<div class="test" id="testJquery">
+			<button class="startTest" ng-click="startTest()">Начать тест!</button>
 		</div>
 	</main><!-- .content -->
 

@@ -1,24 +1,38 @@
-/**
- * To do list!
- * 1.Выдача фильма с 3 результатами: Подойдет, Не хочу смотреть, Не нравится совсем
- * 1а)Изменение коэфицентов фильма при ответе не нравится совсем
- *    жанр от 0 до 4 +0.5 от 6 до 10 - 0.5
- *    +++2.В каждый фильм внести 3 актера
- *    +++2а)Сделать вопрос на выбор актера(нравится,воздержусь,не нравится)
- *    +++2аа)Создать базу данных со всеми актерами
- *    +++2б)Создать базу юзера по актерам
- *    +++2в)Учитывать актеров при подборе фильмов
- *    +++ 3.Сделать разделение фильмов на мужской,женский,семейный
- *    +++3а)Сделать вопрос какие пункты подходят человеку
- *    +++3б)Учитывать эти пункты при подборе фильма
- *    +++4.Сделать вопрос на фильм каких годов хотел бы посмотреть человек
- */
-
 
 
 //Минимальное значение входит, максимальное нет
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function getDataStorage(){
+	if(getObject("favoriteActors")!=="InvalidKey"){
+		favoriteActors=getObject("favoriteActors");
+	}
+	if(getObject("dislikeActors")!=="InvalidKey"){
+		dislikeActors=getObject("dislikeActors");
+	}
+	if(getObject("randomActorss")!=="InvalidKey"){
+		randomActors=getObject("randomActors");
+	}
+	if(getObject("filmsRanks")!=="InvalidKey"){
+		filmsRanks=getObject("filmsRanks");
+	}
+	if(getObject("userGenre")!=="InvalidKey"){
+		userGenre=getObject("userGenre");
+	}
+	if(getObject("filmForUser")!=="InvalidKey"){
+		filmForUser=getObject("filmForUser");
+	}
+}
+
+function saveDataStorage() {
+	pushObject("favoriteActors",favoriteActors);
+	pushObject("dislikeActors",dislikeActors);
+	pushObject("randomActors",randomActors);
+	pushObject("filmsRanks",filmsRanks);
+	pushObject("userGenre",userGenre);
+	pushObject("filmForUser",filmForUser);
 }
 
 var favoriteActors=[];//Актеры которые нравятся пользователю
@@ -27,23 +41,40 @@ var randomActors=[];//Актеры которых предложим оцени�
 var filmsRanks=[];//Массив фильмов с рейтенгом для пользователя
 var userGenre=new Object();//Параметры юзера по его запросам
 var filmForUser=0;//Запоминаем сколько фильмов откинул юзер
+//Адрес сайта
+var address="file:///C:/Users/Dmitrii/Desktop/Film-helper/film-helper/";
 
 $(document).ready(function(){
-	//$(".header").css("border","3px solid red");
+	getDataStorage();
 });
 angular.module("myApp",[])
 .controller("firstCtrl",function ($scope) {
+	$scope.startTest = function(){
+		sessionStorage.clear();
+		document.location.href = address+"sliders.html";
+	}
 	$scope.showFilm = function(){
 		$scope.currentFilm=bestFilmForUser();
 	}
+	$scope.disFilm = function(){
+		dontLikeFilm();
+		$scope.currentFilm=bestFilmForUser();
+	}
+	$scope.showNext = function(){
+		$scope.currentFilm=userPickNextFilm();
+	}	
 	$scope.pickGenresButton = function(){
 			pickYourGenre($('#slider-vertical').slider("option", "value"),$('#slider-vertical2').slider("option", "value"),
 				$('#slider-vertical3').slider("option", "value"),
 				$('#slider-vertical4').slider("option", "value"),
 				$('#slider-vertical5').slider("option", "value"));
+			saveDataStorage();
+			document.location.href = address + "pickFavoriteHero.html";
 	}
 	$scope.pickAgesButton = function(){
-			pickYears([$("#slider-range").slider("values",0),$("#slider-range").slider("values",1)]);
+		pickYears([$("#slider-range").slider("values",0),$("#slider-range").slider("values",1)]);
+		saveDataStorage();
+		document.location.href = address + "pickFavoriteActors.html";
 	}
 	$scope.pickTypeButton = function(){
 		if($("#mens").is(':checked')){
@@ -55,18 +86,20 @@ angular.module("myApp",[])
 		}else{
 			pickType("null");
 		}
+		saveDataStorage();
+		document.location.href = address + "Years.html";
 	}
 	$scope.generateRandomActors = function(){
 		showRandomActors();
 		let currentActors=getActorsFromBase();
 		$scope.inBrowserActors=currentActors;
-		let nameOfImage1="Sources/img/actors/"+currentActors[0].photo+".jpg";
+		let nameOfImage1="sources/img/actors/"+currentActors[0].photo+".jpg";
 		$("#firstActor").attr("src",nameOfImage1);
-		let nameOfImage2="Sources/img/actors/"+currentActors[1].photo+".jpg";
+		let nameOfImage2="sources/img/actors/"+currentActors[1].photo+".jpg";
 		$("#secondActor").attr("src",nameOfImage2);
-		let nameOfImage3="Sources/img/actors/"+currentActors[2].photo+".jpg";
+		let nameOfImage3="sources/img/actors/"+currentActors[2].photo+".jpg";
 		$("#thirdActor").attr("src",nameOfImage3);
-		let nameOfImage4="Sources/img/actors/"+currentActors[3].photo+".jpg";
+		let nameOfImage4="sources/img/actors/"+currentActors[3].photo+".jpg";
 		$("#fourthActor").attr("src",nameOfImage4);
 	}
 	$scope.likeDislikeActors = function(){
@@ -99,6 +132,8 @@ angular.module("myApp",[])
 			resultLikes.push("null");
 		}
 		pickFavoriteActor(resultLikes);
+		saveDataStorage();
+		document.location.href = address + "resultFilm.html";
 
 	}
 	$scope.pickHeroButton =function() {
@@ -111,8 +146,26 @@ angular.module("myApp",[])
 		}else if($("#radioventura").is(':checked')){
 			pickFavoriteHero(4);
 		}
+		saveDataStorage();
+		document.location.href = address + "pickGenre.html";
 	}
 });
+
+/**
+ * Функции для работы с локальным хранилищем
+ */
+
+
+function pushObject(key,data) {
+	sessionStorage.setItem(key,JSON.stringify(data));
+}
+function getObject(key) {
+	if (sessionStorage.getItem(key) !== null) {
+		return JSON.parse(sessionStorage.getItem(key));	
+	}else{
+		return "InvalidKey";
+	}		
+}
 
 /**
  * Конструктор обьектов результат фильма.
@@ -254,8 +307,12 @@ function bestFilmForUser() {
  *Показывает следующий в рейтинге для человека
  */
 function userPickNextFilm(){
-	filmForUser++;
-	bestFilmForUser();
+	if(filmForUser==(arrayFilms.length-1)){
+		console.log("Фильмы закончились");
+	}else{
+		filmForUser++;
+	}
+	return bestFilmForUser();
 }
 /*Ставит дизлайк на фильм(сильно понижает его в рейтинге)
  *Изменяет коэфиценты жанров

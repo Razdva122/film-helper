@@ -51,6 +51,24 @@ body {
 	height: 50px;
 }
 
+.disFilm{
+	position: absolute;
+	top:70%;
+	left: 50%;
+	margin-left: -400px;
+	width: 200px; 
+	height: 50px;
+}
+
+.showNext{
+	position: absolute;
+	top:70%;
+	left: 50%;
+	margin-left: 200px;
+	width: 200px; 
+	height: 50px;
+}
+
 .startTestHeroes{
 	position: absolute;
 	top:90%;
