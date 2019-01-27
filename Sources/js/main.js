@@ -73,6 +73,7 @@ angular.module("myApp",[])
 	}
 	$scope.pickAgesButton = function(){
 		pickYears([$("#slider-range").slider("values",0),$("#slider-range").slider("values",1)]);
+		$scope.generateRandomActors();
 		saveDataStorage();
 		document.location.href = address + "pickFavoriteActors.html";
 	}
@@ -89,6 +90,13 @@ angular.module("myApp",[])
 		saveDataStorage();
 		document.location.href = address + "Years.html";
 	}
+	/** не работает, отображается только изображения 
+	$(document).ready(function(){
+		if(location.href===address+"pickFavoriteActors.html"){
+			$scope.generateRandomActors;
+		}
+	});
+	*/
 	$scope.generateRandomActors = function(){
 		showRandomActors();
 		let currentActors=getActorsFromBase();

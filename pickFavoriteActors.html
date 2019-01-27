@@ -3,20 +3,44 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>jQuery UI Slider - Vertical slider</title>
+  <title>Film Helper - поможим решить что посмотреть сегодня!</title>
+  <!--Подключение Слайдеров-->
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <!--Подключение Css-->
   <link href="sources/css/style.css" rel="stylesheet">
-  <!--Подключение Jquery + Angular-->
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!--Подключение Jquery + Angular-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <!--Подключение Js Файлов-->
   <script src="sources/js/films_info.js"></script>
   <script src="sources/js/films.js"></script>  
   <script src="sources/js/main.js"></script>
 </head>
 <body ng-controller="firstCtrl">
-  <div class="test">
+  <header class="header">
+    <div class="row">
+      <div class="logoImg">
+        <img src="sources/img/logo.png" id="logo">
+      </div>
+      <nav class="menu">
+        <ul>
+          
+          <a href="index.html" class="selected"><li>
+              Главная
+          </li></a>
+          <a href="top_years.html"><li>
+              Лучшие фильмы года
+          </li></a>
+          <a href="about.html"><li>
+              О проекте
+          </li></a>
+        </ul>
+      </nav>
+    </div>
+  </header><!-- .header-->
+<main class="content">
+    <div class="test">
     <div class="actorsTitle">
       Оцените актера.
     </div>
@@ -112,9 +136,16 @@
         </p>
       </div>
     </div>
-  	<button class="randomActors" ng-click="generateRandomActors()">Генерация Актеров</button>
+    <button class="randomActors" ng-click="generateRandomActors()">Генерация Актеров</button>
     <button class="doneTest" ng-click="likeDislikeActors()">Готово</button>
     </div>
   </div>
+  </main><!-- .content -->
+
+</div><!-- .wrapper -->
+
+<footer class="footer">
+  <strong>Test</strong> this is footer
+</footer><!-- .footer -->
 </body>
 </html>

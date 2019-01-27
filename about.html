@@ -29,7 +29,7 @@
 	<meta name="theme-color" content="#ffffff">    
 </head>
 
-<body ng-controller="firstCtrl">
+<body ng-controller="firstCtrl" class="info">
 
 <div class="wrapper">
 
@@ -41,7 +41,7 @@
 			<nav class="menu">
 				<ul>
 					<li>
-						<a href="index.html" class="selected">
+						<a href="index.html">
 							Главная
 						<a>
 					</li>
@@ -51,7 +51,7 @@
 						<a>
 					</li>
 					<li>
-						<a href="about.html">
+						<a href="about.html" class="selected">
 							О проекте
 						<a>
 					</li>
@@ -61,8 +61,24 @@
 	</header><!-- .header-->
 
 	<main class="content">
-		<div class="test" id="testJquery">
-			<button class="startTest" ng-click="startTest()">Начать тест!</button>
+		<div class="titleAbout">
+			О проекте		
+		</div>
+		<div class="textAbout">
+			Film-helper - это веб-сервис по индивидуальному подбору фильмов. Наш сайт создан для тех кому сложно подобрать фильм, пройдя не большой тест наша система поможет вам подобрать фильм для просмотра.
+			<br>
+			<br>
+			Основными преимуществами нашего сайта являются:
+			<div class="listadventage">
+				<ul class="list3a">
+				 <li>Специальная интелектуальная система разработнная специально что бы подобрать вам фильм.</li>
+				 <li>Быстрый тест,который не займет у вас дольше 5 минут.</li>
+				 <li>Возможность быстрой переработки списка фильмов для вас одним лишь нажатием на кнопку "Dislike".</li>
+				</ul>
+			</div>
+			<br>
+			<br>
+			Сайт является дипломным проектом, и в дальнейшем будет улучшаться и прогрессировать.
 		</div>
 	</main><!-- .content -->
 

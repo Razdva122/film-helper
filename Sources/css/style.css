@@ -197,6 +197,9 @@ body {
 	background: #61c3ff;
 	position: relative;
 }
+.info{
+	background: white;
+}
 
 
 /* Footer
@@ -394,6 +397,28 @@ input.genrePick, textarea {
 
 }
 
+.titleAbout{
+	position: relative;
+	top:40px;
+	font-family: serif;
+	font-style: italic;
+	font-size: 50px;
+	text-align: center;
+}
+.textAbout{
+	position: relative;
+	line-height: 1.3;
+	top:70px;
+	font-size: 30px;
+	text-align: left;
+	width: 900px;
+	height: 600px;
+	margin: auto;
+}
+.listadventage{
+	font-size: 24px;
+}
+
 input.yearsPick, textarea { 
 	background: none; 
 	border:0; 
@@ -445,3 +470,67 @@ input.yearsPick, textarea {
 .radio:focus + label:before {
   box-shadow: 0 0 0 3px rgba(255,255,0,.7);
 }
+
+
+
+.list3a {
+    padding:0;
+    list-style: none;
+    counter-reset: li;
+}    
+.list3a li {
+    position: relative;
+    border-left: 4px solid #337AB7;
+    padding:16px 20px 16px 28px;
+    margin:12px 0 12px 80px;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+.list3a li:before {
+    line-height: 32px;
+    position: absolute;
+    top: 10px;
+    left:-80px;
+    width:80px;
+    text-align:center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #77AEDB;
+    counter-increment: li;
+    content: counter(li);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;    
+}
+.list3a li:hover:before {
+    color: #337AB7;
+}
+.list3a li:after {
+    position: absolute;
+    top: 26px;
+    left: -40px;
+    width: 60px;
+    height: 60px;
+    border: 8px solid #3399FF;
+    border-radius: 50%;
+    content: '';
+    opacity: 0;
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+    -moz-transition: -moz-transform 0.3s, opacity 0.3s;
+    transition: transform 0.3s, opacity 0.3s;
+    -webkit-transform: translateX(-50%) translateY(-50%) scale(0.1);
+    -moz-transform: translateX(-50%) translateY(-50%) scale(0.1);
+    transform: translateX(-50%) translateY(-50%) scale(0.1);
+    pointer-events: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;        
+}
+.list3a li:hover:after {
+    opacity: 0.2;
+    -webkit-transform: translateX(-50%) translateY(-50%) scale(1);
+    -moz-transform: translateX(-50%) translateY(-50%) scale(1);
+    transform: translateX(-50%) translateY(-50%) scale(1);
+}    
