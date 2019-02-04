@@ -10,6 +10,8 @@
  * @param {[number]} actionRating    Экшн(Боевик)
  * @param {[number]} fantasyRating   Фантастика
  * @param {[number]} adventureRating Приключение
+ * @param {[array]} actors           Массив из 3х главных актеров
+ * @param {[array]} type             Типы фильмов от 0 до 1
  */
 function Film(title,year,rating,info,dramaRating,comedyRating,
 	actionRating,fantasyRating,adventureRating,actors,type){
@@ -62,9 +64,34 @@ var fightClub=new Film("Бойцовский клуб",1999,8.650,fightClubInfo,
 	0,7,3,1,["Эдвард Нортон","Брэд Питт","Хелена Бонем Картер"],[0.6,1,0.1]);
 var ivan=new Film("Иван Васильевич меняет профессию",1973,8.785,ivanInfo,2,
 	8,3,7,7,["Александр Демьяненко","Юрий Яковлев","Леонид Куравлёв"],[0.8,0.8,0.8]);
+var liveIs=new Film("Жизнь прекрасна",1997,8.629,liveIsInfo,9,7,2,1,5,["Роберто Бениньи","Николетта Браски",
+	"Джорджио Кантарини"],[0.8,0.4,0.5]);
+var heaven=new Film("Достучаться до небес",1997,8.631,heavenInfo,8,6,7,0,3,["Тиль Швайгер","Ян Йозеф Лиферс",
+	"Тьерри Ван Вервеке"],[0.3,0.8,0.1]);
+var godfather=new Film("Крестный отец",1972,8.734,godfatherInfo,7,0,7,0,1,["Марлон Брандо","Аль Пачино",
+	"Джеймс Каан"],[0.4,0.9,0.1]);
+var pulpFiction=new Film("Криминальное чтиво",1994,8.619,pulpFictionInfo,2,8,8,0,0,["Джон Траволта",
+	"Сэмюэл Л. Джексон","Брюс Уиллис"],[0.6,1,0]);
+var prestige=new Film("Престиж",2006,8.524,prestigeInfo,5,0,7,7,3,["Хью Джекман","Кристиан Бэйл","Майкл Кейн"],
+	[0.7,0.7,0.7]);
+var shurik=new Film("Операция «Ы» и другие приключения Шурика",1965,8.714,shurikInfo,3,9,6,2,7,
+	["Александр Демьяненко","Наталья Селезнёва","Алексей Смирнов"],[0.8,0.8,0.8]);
+var mindGames=new Film("Игры разума",2001,8.557,mindGamesInfo,5,0,7,2,4,
+	["Рассел Кроу","Эд Харрис","Дженнифер Коннелли"],[1,0.6,0.3]);
+var gladiator=new Film("Гладиатор",2000,8.585,gladiatorInfo,8,0,8,3,6,
+	["Рассел Кроу","Хоакин Феникс","Конни Нильсен"],[0.8,1,0.1]);
+var interstellar=new Film("Интерстеллар",2014,8.587,interstellarInfo,10,0,3,7,7,
+	["Мэттью МакКонахи","Энн Хэтэуэй","Джессика Честейн"],[0.8,0.8,0.1]);
+var lotrKing=new Film("Властелин колец: Возвращение Короля",2003,8.617,lotrKingInfo,
+	6,2,7,10,10,["Элайджа Вуд","Вигго Мортенсен","Шон Эстин"],[0.5,1,0.5]);
+
+
+
+
 
 var arrayFilms=[shawshank,greenMile,forrestGump,schindler,
-	onePlus,leon,inception,lionKing,fightClub,ivan];
+	onePlus,leon,inception,lionKing,fightClub,ivan,liveIs,heaven,
+	godfather,pulpFiction,prestige,shurik,mindGames,gladiator,lotrKing];
 
 var timRobbins=new Actor("Тим Роббинс","timRobbins","Драма,Комедия,Мелодрама",
 	["Побег из Шоушенка","Субботним вечером в прямом эфире","На грани"]);

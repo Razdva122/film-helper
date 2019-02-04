@@ -88,7 +88,7 @@ angular.module("myApp",[])
 			pickType("null");
 		}
 		saveDataStorage();
-		document.location.href = address + "Years.html";
+		document.location.href = address + "years.html";
 	}
 	/** не работает, отображается только изображения 
 	$(document).ready(function(){
@@ -97,9 +97,8 @@ angular.module("myApp",[])
 		}
 	});
 	*/
-	$scope.generateRandomActors = function(){
-		showRandomActors();
-		let currentActors=getActorsFromBase();
+	$scope.generateRandomActors = function(){	
+		let currentActors=showRandomActors();
 		$scope.inBrowserActors=currentActors;
 		let nameOfImage1="sources/img/actors/"+currentActors[0].photo+".jpg";
 		$("#firstActor").attr("src",nameOfImage1);
@@ -201,10 +200,36 @@ function FilmResult(film,drama,comedy,action,fantasy,adventure,
 
 	this.yearsRating=yearsRating;
 
-	this.total=(this.drama+this.comedy+this.action
+	this.tempRating=(this.drama+this.comedy+this.action
 		+this.fantasy+this.adventure)*actorsRating
 		*typeRating*yearsRating+(20*this.film.dislike);
+
+	this.total=(this.film.rating+countRate(this.tempRating))/14*10;
+
+	
 }
+/**
+ * Функция подсчитывающия на сколько изменить рейтинг фильма
+ * 
+ * @param {number} [userRating] Чем число меньше тем больше
+ *                              фильм подоходит юзеру из этого
+ *                              вычесляем на сколько изменить рейтинг
+ *                         
+ */
+function countRate(userRating){
+		if(userRating<1){
+			return 4
+		}else if(userRating<5){
+			return 3+(1/userRating);
+		}else if(userRating<10){
+			return 2+(5/userRating);
+		}else if(userRating<20){
+			return 1+(10/userRating);
+		}else{
+			return 20/userRating;
+		}
+}
+
 
 /**
  * Сравнивает результаты пользователя с базой данных по фильмам.
@@ -285,17 +310,19 @@ function pickYourGenre(drama,comedy,action,fantasy,adventure){
 
 /**
  * Сортирует фильмы в массиве filmsRanks
- * По значению total(Сумма значений совместимости всех жанров).
- * Чем total меньше(ближе к 0) тем лучше фильм подходит юзеру
+ * По значению total(Новый рейтинг фильма учитывающий старый+
+ * 					 соответсвие фильма идеальному прототипу
+ * 					 построенного программой).
+ * Чем total больше(ближе к 10) тем лучше фильм подходит юзеру
  */
 
 function sortFilms(){
 	filmsRanks.sort(function(a, b){
 		var totalA=a.total, totalB=b.total;
-	 	if (totalA < totalB){ //sort string ascending
+	 	if (totalA > totalB){
 	  		return -1;
 	  	}
-	 	if (totalA > totalB){
+	 	if (totalA < totalB){
 	  		return 1;
 	  	}
 		return 0; //default return value (no sorting)
@@ -424,16 +451,18 @@ function fixGenreStats(){
 function showRandomActors() {
 	randomActors=[];
 	for(;;){
-		var actor=arrayFilms[getRandomInt(0, arrayFilms.length)].actors[getRandomInt(0, 3)];
+		var actor=arrayActors[getRandomInt(0, arrayActors.length)];
 		if(!randomActors.includes(actor)){
 			randomActors.push(actor);
 		}
 		if(randomActors.length===4){
+			return randomActors;
 			break;
 		}
 	}
 }
 /**
+ * В СВЯЗИ С ПЕРЕРАБОТКОЙ ФУНКЦИЯ ПОКА НЕ ИСПОЛЬЗУЕТСЯ 
  * Используем список имен, случайных актеров
  * Находим 
  * @return {[array]} возвращает массив обьектов типа Актер
