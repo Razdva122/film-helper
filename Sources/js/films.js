@@ -91,7 +91,7 @@ var lotrKing=new Film("Властелин колец: Возвращение К�
 
 var arrayFilms=[shawshank,greenMile,forrestGump,schindler,
 	onePlus,leon,inception,lionKing,fightClub,ivan,liveIs,heaven,
-	godfather,pulpFiction,prestige,shurik,mindGames,gladiator,lotrKing];
+	godfather,pulpFiction,prestige,shurik,mindGames,gladiator,interstellar,lotrKing];
 
 var timRobbins=new Actor("Тим Роббинс","timRobbins","Драма,Комедия,Мелодрама",
 	["Побег из Шоушенка","Субботним вечером в прямом эфире","На грани"]);

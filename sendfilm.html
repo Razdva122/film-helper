@@ -1,0 +1,124 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Film Helper - поможим решить что посмотреть сегодня!</title>
+  <!--Подключение Слайдеров-->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <!--Подключение Css-->
+  <link href="sources/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!--Подключение Jquery + Angular-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <!--Подключение Js Файлов-->
+  <script src="sources/js/films_info.js"></script>
+  <script src="sources/js/films.js"></script>  
+  <script src="sources/js/main.js"></script>
+    <!--Подключение Favicon-->
+    <link rel="apple-touch-icon" sizes="76x76" href="sources/img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="sources/img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="sources/img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="sources/img/favicon/site.webmanifest">
+  <link rel="mask-icon" href="sources/img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">  
+</head>
+<body ng-controller="firstCtrl">
+  <header class="header">
+    <div class="row">
+      <div class="logoImg">
+        <img src="sources/img/logo.png" id="logo">
+      </div>
+      <nav class="menu">
+        <ul>
+          
+          <a href="index.html"><li>
+              Главная
+          </li></a>
+          <a href="sendfilm.html" class="selected"><li>
+              Bounty
+          </li></a>
+          <a href="calendar.html"><li>
+              Премьеры
+          </li></a>
+          <a href="top_years.html"><li>
+              Лучшие фильмы года
+          </li></a>
+          <a href="about.html"><li>
+              О проекте
+          </li></a>
+        </ul>
+      </nav>
+    </div>
+  </header><!-- .header-->
+<main class="content">
+  <div class="otherPagesSend">
+    <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <p class="font-weight-normal">Помогите нашему проекту составить хорошую базу данных фильмов за вознагрождение! За каждый принятый фильм без исправлений мы платим 10 рублей, с исправлениями 5 рублей</p>
+        <form action="form.php" method="post">
+          <div class="form-group">
+            <label for="title">Название фильма</label>
+            <input type="text" class="form-control" id="title" name="title">
+          </div>
+          <button type="submit" class="btn btn-default">Проверить фильм</button>
+          <div class="form-group">
+           <label for="year">Год выпуска</label>
+            <input type="number" class="form-control" id="year" name="year">
+          </div>
+          <div class="form-group">
+           <label for="rating">Рейтинг фильма Кинопоиск</label>
+            <input type="number" class="form-control" id="rating" name="rating">
+          </div>
+          <div class="form-group">
+            <label for="info">Описание фильма(взять с Кинопоиска)</label>
+            <input type="text" class="form-control" id="info" name="info">
+          </div>
+          <p class="font-weight-normal">Оценка фильма по жанру проводится по шкале от 1 до 10. <br>1-3 - фильм абсолютно не соответсвует жанру<br>3-5 - фильм содержит элементы этого жанра<br>5-8 - фильм подоходит под описание этого жанра<br>8-10 - этот фильм идеально соответсвует жанру</p>
+          <div class="form-group">
+           <label for="dramaRating">Оцените фильм по жанру драма</label>
+            <input type="number" class="form-control" id="dramaRating" name="dramaRating">
+          </div>
+          <div class="form-group">
+           <label for="comedyRating">Оцените фильм по жанру комедия</label>
+            <input type="number" class="form-control" id="comedyRating" name="comedyRating">
+          </div>
+          <div class="form-group">
+           <label for="actionRating">Оцените фильм по жанру Экшен</label>
+            <input type="number" class="form-control" id="actionRating" name="actionRating">
+          </div>
+          <div class="form-group">
+           <label for="fantasyRating">Оцените фильм по жанру Фэнтази</label>
+            <input type="number" class="form-control" id="fantasyRating" name="fantasyRating">
+          </div>
+          <div class="form-group">
+           <label for="adventureRating">Оцените фильм по жанру Приключения</label>
+            <input type="number" class="form-control" id="adventureRating" name="adventureRating">
+          </div>
+          <div class="form-group">
+           <label for="actors">Введите 3 главных актера фильма(через запятую)</label>
+            <input type="text" class="form-control" id="actors" name="actors">
+          </div>
+          <div class="form-group">
+           <label for="payment">Введите номер кошелька(WMR) или номер телефона(КИВИ) куда перевести деньги</label>
+            <input type="text" class="form-control" id="payment" name="payment">
+          </div>
+          <button type="submit" class="btn btn-default">Отправить</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+  </main><!-- .content -->
+
+</div><!-- .wrapper -->
+
+<footer class="footer">
+  <strong>Copyright © 2018-2019. All Rights Reserved. Admin: lexur-02@yandex.ru</strong>
+</footer><!-- .footer -->
+</body>
+</html>

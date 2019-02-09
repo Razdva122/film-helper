@@ -16,7 +16,7 @@
   <script src="sources/js/films_info.js"></script>
   <script src="sources/js/films.js"></script>  
   <script src="sources/js/main.js"></script>
-  <!--Подключение Favicon-->
+    <!--Подключение Favicon-->
     <link rel="apple-touch-icon" sizes="76x76" href="sources/img/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="sources/img/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="sources/img/favicon/favicon-16x16.png">
@@ -34,13 +34,13 @@
       <nav class="menu">
             <ul>
               
-              <a href="index.html" class="selected"><li>
+              <a href="index.html"><li>
                   Главная
               </li></a>
               <a href="sendfilm.html" ><li>
                   Bounty
               </li></a>
-              <a href="calendar.html"><li>
+              <a href="calendar.html" class="selected"><li>
                   Премьеры
               </li></a>
               <a href="top_years.html"><li>
@@ -50,45 +50,16 @@
                   О проекте
               </li></a>
             </ul>
-          </nav>
+        </nav>
     </div>
   </header><!-- .header-->
 <main class="content">
-    <div class="test">
-    <div class="titleGenre">
-      Фильм какого типа вы бы хотели посмотреть?
+  <div class="otherPages">
+    <div class="titleAbout">
+        Календарь премьер фильмов
     </div>
-    <div class="ages">
-      <div class="pick">
-        <img src="sources/img/questions/mens.png" alt="Мужские фильмы">
-        <div class="mensPick">
-          <input name="age" type="radio" class="radio" id="mens" value="Мужской"/>
-          <label for="mens" class="option">Мужской</label>
-        </div>
-      </div>
-      <div class="pick">
-        <img src="sources/img/questions/girls.png" alt="Женские фильмы">
-        <div class="girlsPick">
-          <input name="age" type="radio" class="radio" id="girls" value="Женский"/>
-          <label for="girls" class="option">Женский</label>
-        </div>
-      </div>
-      <div class="pick">
-        <img src="sources/img/questions/family.png" alt="Семейные фильмы">
-        <div class="familyPick">
-          <input name="age" type="radio" class="radio" id="family" value="Семейный"/>
-          <label for="family" class="option">Семейный</label>
-        </div>
-      </div>
-      <div class="pick">
-        <img src="sources/img/questions/null.png" alt="Фильмы для всех">
-        <div class="nonePick">
-          <input name="age" type="radio" class="radio" id="none" value="none"/>
-          <label for="none" class="option">Любой</label>
-        </div>
-      </div>
-    </div>
-    <button class="startTest" ng-click="pickTypeButton()">Готово!</button>
+    <div class="calendar">
+      <iframe src="https://calendar.google.com/calendar/embed?showNav=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;height=800&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=tia0upc2cqp17durq8kg6f1vi4%40group.calendar.google.com&amp;color=%232952A3&amp;ctz=Asia%2FYekaterinburg" style="border-width:0" width="800" height="800" frameborder="0" scrolling="no"></iframe>
     </div>
   </div>
   </main><!-- .content -->
