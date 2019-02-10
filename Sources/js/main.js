@@ -97,6 +97,20 @@ angular.module("myApp",[])
 		}
 	});
 	*/
+	$scope.checkFilm =function(){
+		if(!$("#title").val()){
+			alert("Вы не ввели название фильма");
+			return;
+		}
+		for(var i=0;i<arrayFilms.length;i++){
+			if(arrayFilms[i].title.toUpperCase()==$("#title").val().toUpperCase()){
+				alert("Такой фильм существует в нашей базе данных");
+				return;
+			}
+		}
+		alert("Такого фильма нет, будем рады если вы отправите его нам");
+		console.log($("#title").val())
+	}
 	$scope.generateRandomActors = function(){	
 		let currentActors=showRandomActors();
 		$scope.inBrowserActors=currentActors;

@@ -59,13 +59,16 @@
     <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <p class="font-weight-normal">Помогите нашему проекту составить хорошую базу данных фильмов за вознагрождение! За каждый принятый фильм без исправлений мы платим 10 рублей, с исправлениями 5 рублей</p>
-        <form action="form.php" method="post">
+        <p class="font-weight-normal" style="font-size: 35px; text-align: center">Bounty - Система вознаграждения </p>
+        <p class="font-weight-normal" style="font-size: 20px">Помогите нашему проекту составить хорошую базу данных фильмов за вознаграждение!<br>За каждый принятый фильм без исправлений мы платим 10 рублей, с исправлениями 5 рублей.<br>
+        Перед началом проверьте существует ли фильм в нашей базе, при помощи кнопки "Проверить фильм".
+        </p>
+          <button class="btn btn-default" ng-click="checkFilm()">Проверить фильм</button>
+          <form action="form.php" method="post">
           <div class="form-group">
-            <label for="title">Название фильма</label>
+            <label for="title">Название фильма ( используйте полное название с кинопоиска )</label>
             <input type="text" class="form-control" id="title" name="title">
           </div>
-          <button type="submit" class="btn btn-default">Проверить фильм</button>
           <div class="form-group">
            <label for="year">Год выпуска</label>
             <input type="number" class="form-control" id="year" name="year">
@@ -78,7 +81,7 @@
             <label for="info">Описание фильма(взять с Кинопоиска)</label>
             <input type="text" class="form-control" id="info" name="info">
           </div>
-          <p class="font-weight-normal">Оценка фильма по жанру проводится по шкале от 1 до 10. <br>1-3 - фильм абсолютно не соответсвует жанру<br>3-5 - фильм содержит элементы этого жанра<br>5-8 - фильм подоходит под описание этого жанра<br>8-10 - этот фильм идеально соответсвует жанру</p>
+          <p class="font-weight-normal" style="font-size: 20px">Оценка фильма по жанру проводится по шкале от 1 до 10. <br>1-3  - фильм абсолютно не соответсвует жанру<br>3-5 - фильм содержит элементы этого жанра<br>5-8 - фильм подоходит под описание этого жанра<br>8-10 - этот фильм идеально соответсвует жанру</p>
           <div class="form-group">
            <label for="dramaRating">Оцените фильм по жанру драма</label>
             <input type="number" class="form-control" id="dramaRating" name="dramaRating">
